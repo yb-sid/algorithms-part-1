@@ -1,4 +1,4 @@
-package Week2;
+package Week2.stacks_and_queues;
 
 
 // TODO : implement generic LL and array stack
