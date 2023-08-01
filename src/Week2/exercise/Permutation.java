@@ -1,6 +1,11 @@
+package Week2.exercise;
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * <a href="https://coursera.cs.princeton.edu/algs4/assignments/queues/specification.php">...</a>
+ */
 public class Permutation {
     public static void main(String[] args) {
         if(args.length<1){

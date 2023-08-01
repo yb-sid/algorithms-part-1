@@ -1,3 +1,5 @@
+package Week2.exercise;
+
 import edu.princeton.cs.algs4.StdOut;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -69,7 +71,7 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the front
     public Item removeFirst(){
         if(isEmpty()){
-            throw new NoSuchElementException("Deque is empty");
+            throw new NoSuchElementException("Week2.exercise.Deque is empty");
         }
         Item value = first.value;
         first = first.next;
@@ -85,7 +87,7 @@ public class Deque<Item> implements Iterable<Item> {
     // remove and return the item from the back
     public Item removeLast(){
         if(isEmpty()){
-            throw new NoSuchElementException("Deque is empty");
+            throw new NoSuchElementException("Week2.exercise.Deque is empty");
         }
         Item value = last.value;
         last = last.prev;
@@ -137,7 +139,7 @@ public class Deque<Item> implements Iterable<Item> {
         deque.addLast("three");
 
         // print the queue using iterator
-        StdOut.println("Deque init status :");
+        StdOut.println("Week2.exercise.Deque init status :");
         for(String item : deque){
             StdOut.print(item+" ");
         }
@@ -149,7 +151,7 @@ public class Deque<Item> implements Iterable<Item> {
         StdOut.println("Removed first element :"+removedFirst);
         StdOut.println("Removed last element :"+removedLast);
 
-        StdOut.println("Deque status after removing :");
+        StdOut.println("Week2.exercise.Deque status after removing :");
         for(String item : deque){
             StdOut.print(item+" ");
         }
