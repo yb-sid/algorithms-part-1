@@ -1,4 +1,4 @@
-package Week2.stacks_and_queues;
+package week2.stacks_and_queues;
 
 public class StackLLString {
 

@@ -1,4 +1,4 @@
-package Week2.exercise;
+package week2.exercise;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

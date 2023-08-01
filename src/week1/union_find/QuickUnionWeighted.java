@@ -21,7 +21,7 @@ public class QuickUnionWeighted {
 
     private int root(int i){
         while(i!=parent[i]){
-            i = parent[i];
+            i = parent[parent[i]];
         }
         return i;
     }
