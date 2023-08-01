@@ -1,5 +1,8 @@
 package week1.union_find;
 
+
+// TODO : social network connectivity
+//  , union-find with max  , successor with delete
 public class QuickFindUF {
 
     private int[] ids;
