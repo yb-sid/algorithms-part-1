@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class RecursiveMergeSort {
 
     private boolean isSorted(Comparable[] arr,int lo,int hi){
-        for(int i=1;i<=hi;i++){
+        for(int i=lo+1;i<=hi;i++){
             if(arr[i].compareTo(arr[i-1])<0){
                 return false;
             }
@@ -52,7 +52,7 @@ public class RecursiveMergeSort {
     }
     public static void main(String[] args) {
         RecursiveMergeSort mergeSort = new RecursiveMergeSort();
-        String[] arr = new String[]{"bb","aa","cc","gg","zz","kk","mm"};
+        String[] arr = { "qr", "st","ab","kl", "mn", "op", "cd", "ef", "gh", "ij"};
         System.out.println(mergeSort.isSorted(arr,0,arr.length-1));
         System.out.println("Array before merge sort : "+ Arrays.toString(arr));
         mergeSort.sort(arr);
