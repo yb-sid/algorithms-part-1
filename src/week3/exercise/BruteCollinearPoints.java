@@ -1,3 +1,5 @@
+package week3.exercise;
+
 import java.util.Arrays;
 
 public class BruteCollinearPoints {
