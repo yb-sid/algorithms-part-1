@@ -36,6 +36,14 @@ public class HeapSort <T extends Comparable<T>>{
         }
     }
 
+    // Helper method to perform the "swim" operation
+    private void swim(T[] arr, int k) {
+        while (k > 0 && arr[(k - 1) / 2].compareTo(arr[k]) < 0) {
+            swap(arr, k, (k - 1) / 2);
+            k = (k - 1) / 2;
+        }
+    }
+
     private void swap(T[] arr, int i, int j) {
         T temp = arr[i];
         arr[i] = arr[j];
