@@ -1,0 +1,266 @@
+Alogorithms_part1_coursera
+=========================
+Scientific method to Alogorithms
+- model the problem
+- select an initial algorithm 
+- is it fast enough ?? does it fit in memory ??
+- if not , find out why ?
+- iterate until a satisfactory solution is achieved.
+
+
+javac -cp dependencies.jar XXX.java
+java -cp .:dependencies.jar XXX 
+
+
+command to compile and run with jar
+
+
+==========
+Dynamic Connectivity problem (Union Find)
+Given a set of N objects
+- Union Command - connect 2 objects 
+- Find / Connect query :- is there a path between two given objects
+
+Model the connections 
+--------------------
+Reflexive - p is connecte to p 
+Symmetric - p is connected to q , q is connected to p 
+Transitive - p is connected to q , q is connected to r , so p is connected to r (**)
+
+Connected components (same as graph)
+
+====================
+Union-find - API/data structures
+
+req 
+- Number of objects can be huge 
+- number of operations can be huge 
+- union & find operations can be mixed 
+
+-------------
+class UF(Union-Find)
+- UF(N) initialize UF structure to hold N objects (constructor)
+- void union(int p , int q ) - add connection between p & q 
+- boolean connected(int p , int q ) => are p and q in same component 
+- int find(int p) - which component p lies in 
+- int count() - num of components 
+============
+Stack => push/pop 
+Queue => enqueue / dequeue 
+
+interface => client use , implementation - hidden to users 
+
+
+stack - array => grow when array is full to double , 
+shrink to half if 25% full 
+
+Java does not support generic arrays , so use object[] and casting
+
+
+Iterator interface :
+when a collection needs to be iterated without revealing internal representation
+
+Iterator : a class that has a method iterator() , returns an Iterator=> hasNext() and next()
+
+if a collection is Iterable , we can use for each loop on it 
+
+bag => add without remove , iterate 
+
+=====================
+
+Sorting 
+
+java : Comparable Interface -> compareTo method
+class implements Comparable , sort calls compareTo 
+
+Comparator => Sorting based on different keys but same data 
+
+MergeSort stable , QuickSort un-stable 
+Quicksort => n log n => based on randomized => becomes n^2 if bad pivot 
+MergeSort => always nlogn => more memory 
+=============
+Priority Quuee : 
+largest or smallest item 
+public class MaxPQ<Key extends Comparable<Key>> { => key is comparable to sort in generic way and implements compareTO method 
+    MaxPQ()
+    MaxPQ(key[])
+    insert(Key)
+    delMax()  
+}
+Find largest M items in a Steam of N items 
+constraint : not enough memory to store
+
+
+binary heaps => Idea use complete binary tree 
+
+complete binary tree => perfectly balanced N(left) ~ N(right)
+except for bottom level 
+
+height only increases when N is power of 2 
+Heap-ordered binary tree
+-----------------
+Key in nodes 
+parent's keys not smaller than chilren's key 
+
+Index start at 1 
+levelr order traversal 
+no links -> use calculation for child / parent index 
+
+properties:
+------------
+-largest key at a[1]
+
+- parent of index k is at k/2 
+- children of index k at 2k , 2k+1
+
+child key larger than parent key 
+- exchange key of parent and child , repeat until 
+
+parent key becomes lesser , than children 
+- exchange with larger child key 
+
+================
+
+2(N-2) , 2(n-2)+1
+2N-4, 2N-1
+
+
+Symbol Table (Maps)
+=================
+Key - value pairs 
+
+associative array - use index as key -> value 
+
+keys-> Comparable , use equals() for equality , 
+hashCode() for scrambling => overridden if classes are used as keys for hash 
+
+keys should be immutable => to aviod change of hashCode(for Generics)
+
+
+naive implementation => 
+-unordered linked list => put() and get() operations => linear times 
+- ordered Array => get() => logN(binary search) , put() => linear (need to shift elements)
+================
+
+Binary Search Tree(BST)
+
+Binary Tree-
+- either null 
+- two disjoint - binary trees
+
+BST - binary tree in symmetric order
+-each node's key 
+- less than right subtree
+- greater than left subtree
+
+Search -> less go left,
+greater go right , found -> hit , null -> miss
+
+insert() -> less go left , more go right , null -> insert and update links
+
+delete() => leads to sqrt(N) time , which increases overall time 
+===================
+
+Balanced Search Trees : 
+
+2-3 trees:
+Allow 1 or 2 Keys per node
+- 1 Keys  -> two child nodes
+- 2 Keys -> three child nodes
+
+every path from root to a null is of same length
+Symmetric - inorder traversal
+
+Search -> if two node -> same as BST , if 3 node , middle path 
+
+insert -> find position , if 1 Key , make it 2 key , if 2 key , make it 3 key and split 
+========
+Red black Tree (left leaning ) 1-1 correspondint to a 2-3 tree
+- no node has 2 red links 
+- every path has same number of black links (perfect black balanced)
+ - given a 2-3 tree asssume red links horizontal
+- red links are towards left
+
+Search - same as BST - but runs faster due to better balance 
+define rotateLeft() , rotateRight() , flipColor() operations
+
+insert => 
+right : RED , left black => rotateLeft
+left : red , left.left : red => rotateRight 
+both red : fliColor 
+==============================
+
+K-d Trees 
+
+insert & delete keys 
+search 2d keys 
+Range search and range count 
+
+------
+keys = points in a plane 
+number of points in rectangle 
+
+
+2-d tree :
+BST but alternate x , y coordinate as keys 
+
+Search gives rectangle containing point 
+Insert further divides plane 
+
+even level - vertical , odd-level - horizontal 
+
+vertical , left,right , hirizontal - botton , top 
+
+
+k-d trees , used for geometric calculations of higher dimentions
+N-body simulation
+============
+
+1-D inetrval search 
+
+-insert an interval (a,b)
+-search an interval (a,b)
+- delete an interval (a,b)
+- interval intersect query - given an interval (a,b)
+find all intervals that intersect (a,b)
+
+
+- BST , use a as key k, store max of subtree as info 
+
+- search intervals 
+
+if node intersects - return Node 
+if left subtree null -> go right
+
+=====================
+Hash-Tables
+
+hash(key) => index 
+
+- compute fast ,
+- each index equally likely for each key
+
+hashCode()
+- if x.equals(y) => x.hashCode() == y.hashCode()
+
+- !x.equals(y) => x.hashCode() != y.hashCode()
+
+Default impl => memory address of x 
+
+String=> horner's method 
+
+use Wrapper HashCode and Arrays.deppHashCode
+
+---------------
+Applications of STs and HTs 
+
+Sets , Dictionary Clients , indexing clients 
+
+Sparse Vectors
+
+
+
+
+
+
+
