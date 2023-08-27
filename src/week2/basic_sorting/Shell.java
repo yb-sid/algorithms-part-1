@@ -1,5 +1,7 @@
 package week2.basic_sorting;
 
+import java.util.Arrays;
+
 public class Shell {
 
     public void sort(Comparable[] a){
@@ -24,5 +26,13 @@ public class Shell {
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        Shell shellSort = new Shell();
+        String[] arr = new String[]{"bb","aa","cc","gg","zz","kk","mm"};
+        System.out.println("Array before insertion sort : "+ Arrays.toString(arr));
+        shellSort.sort(arr);
+        System.out.println("Array after insertion sort : "+ Arrays.toString(arr));
     }
 }

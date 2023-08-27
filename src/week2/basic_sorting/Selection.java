@@ -1,7 +1,9 @@
 package week2.basic_sorting;
 
+import java.util.Arrays;
+
 public class Selection {
-    public static void sort(Comparable[] a){
+    public  void sort(Comparable[] a){
         int N = a.length;
         for(int i=0;i<N;i++){
             int minIndex = i;
@@ -14,13 +16,21 @@ public class Selection {
         }
     }
 
-    private static boolean less(Comparable v , Comparable w){
+    private  boolean less(Comparable v , Comparable w){
         return v.compareTo(w) <0;
     }
 
-    private static void exchange(Comparable[] a , int i , int j){
+    private  void exchange(Comparable[] a , int i , int j){
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        Selection selectionSort = new Selection();
+        String[] arr = new String[]{"bb","aa","cc","gg","zz","kk","mm"};
+        System.out.println("Array before insertion sort : "+ Arrays.toString(arr));
+        selectionSort.sort(arr);
+        System.out.println("Array after insertion sort : "+ Arrays.toString(arr));
     }
 }
